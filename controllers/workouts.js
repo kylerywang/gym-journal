@@ -19,7 +19,7 @@ function show(req,res){
 }
 
 function newWorkout(req,res){
-
+    res.render("workouts/new",{title:"Add Workout"})
 }
 
 function create(req,res){

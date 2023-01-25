@@ -4,6 +4,6 @@ var workoutsCtrl = require('../controllers/workouts');
 // const ensureLoggedIn = require('../config/ensureLoggedIn')
 
 router.get('/', workoutsCtrl.index);
-
+router.get('/new', workoutsCtrl.new)
 
 module.exports = router;
