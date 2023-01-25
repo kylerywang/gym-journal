@@ -23,5 +23,11 @@ function newWorkout(req,res){
 }
 
 function create(req,res){
-
+    console.log(req.body)
+    const workout = new Workout(req.body);
+    workout.save(function(err){
+        if (err) return res.redirect("/workouts/new");
+        console.log(workout)
+        res.redirect('/workouts') //later, redirect to ID-specific page
+    })
 }
