@@ -11,11 +11,15 @@ module.exports = {
     addExercise,
 }
 
-function index(req,res){
-    Workout.find({},function(err, workouts){
-        console.log(req.body)
-        res.render("workouts/index", {title: "All Workouts", workouts})
-    })
+async function index(req,res){
+    try {
+        const workouts = await Workout.find({ user: req.user.id }).lean();
+        console.log(workouts)
+        res.render("/workouts/index", {title: "All Workouts", workouts})
+      } catch (err) {
+        console.error("Error: " + err);
+        res.render("error");
+      } 
 }
 
 function show(req,res){
@@ -42,7 +46,7 @@ function create(req,res){
     workout.save(function(err){
         if (err) return res.redirect("/workouts/new");
         console.log(workout)
-        res.redirect('/workouts') //later, redirect to ID-specific page
+        res.redirect(`/workouts/${workout._id}`) //later, redirect to ID-specific page
     })
 }
 
