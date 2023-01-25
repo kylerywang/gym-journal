@@ -29,7 +29,14 @@ const workoutSchema = new Schema({
     exercises: [exerciseSchema],
     notes:{
         type: String,
-    }
+    },
+    user:{
+        type:Schema.Types.ObjectId,
+        ref:'User',
+        required:true
+    },
+    userName: String,
+    userAvatar: String
 },{
     timestamps: true
 })

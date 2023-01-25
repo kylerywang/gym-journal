@@ -8,11 +8,12 @@ module.exports = {
     create,
     delete: deleteWorkout,
     deleteExercise,
-    addExercise
+    addExercise,
 }
 
 function index(req,res){
     Workout.find({},function(err, workouts){
+        console.log(req.body)
         res.render("workouts/index", {title: "All Workouts", workouts})
     })
 }
@@ -35,6 +36,9 @@ function newWorkout(req,res){
 
 function create(req,res){
     const workout = new Workout(req.body);
+    workout.user = req.user._id;
+    workout.userName = req.user.name;
+    workout.userAvatar = req.user.avatar;
     workout.save(function(err){
         if (err) return res.redirect("/workouts/new");
         console.log(workout)
