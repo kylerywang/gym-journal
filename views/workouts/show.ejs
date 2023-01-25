@@ -2,12 +2,46 @@
 
 <section id="show-page">
     <div><%= workout.updatedAt %></div>
-    <div><%= workout.exercises %></div>
+    <tbody>
+        <% workout.exercises.forEach(function(e) { %>
+          <tr>
+            <td><%= e.exerciseName %></td>
+            <td><%= e.numSets %></td>
+            <td><%= e.numReps %></td>
+            <td><%= e.weight %></td>
+            <form action = "/workouts/<%= workout._id %>/exercises/<%= e._id %>?_method=DELETE" method = "POST">
+                <button type="submit">X</button>
+            </form>
+          </tr>
+          <br>
+          <% }); %>
+    </tbody>
+    <div></div>
 </section>
 <section>
     <br><br>
     <h2>Add exercise</h2>
+    <form action="/workouts/<%= workout._id %>/exercises" method="POST">
+        <label>Exercise Name
+            <input type="text" name="exerciseName">
+        </label>
+        <label>Number of Sets
+            <input type="number" name="numSets">
+        </label>
+        <label>Number of Reps
+            <input type="number" name="numReps">
+        </label>
+        <label>Weight (lbs)
+            <input type="number" name="weight">
+        </label>
+        <button type="submit">Add Exercise</button>
+    </form>
+
+    </form>
     <h2>Notes: </h2>
+    <form action = "/workouts/<%= workout._id %>?_method=DELETE" method = "POST">
+        <button type="submit">X</button>
+    </form>
 </section>
 
 <%- include('../partials/footer') %>
