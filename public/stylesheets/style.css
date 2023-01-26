@@ -56,9 +56,9 @@
   }
   
   button{
-    background-color: #424748; 
-    border-radius: 1px;
-    border-color: white;
+    background-color: transparent; 
+    /* border-radius: 1px; */
+    /* border-color: white; */
     color: white;
     text-align:center;
     padding: 8px 15px ;
