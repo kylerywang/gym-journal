@@ -64,6 +64,7 @@
     padding: 8px 15px ;
     display: inline-block;
     margin-top: 10px
+    box-shadow: none;
   }
 
   nav > a.active {
