@@ -57,7 +57,8 @@
   
   button{
     background-color: #424748; 
-    border: white;
+    border-radius: 1px;
+    border-color: white;
     color: white;
     text-align:center;
     padding: 8px 15px ;
