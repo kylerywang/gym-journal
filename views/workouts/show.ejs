@@ -27,10 +27,10 @@
     <tbody>
         <% workout.exercises.forEach(function(e) { %>
           <tr>
-            <td><%= e.exerciseName %></td>
+            <td><%= e.exerciseName %>x</td>
             <td><%= e.numSets %></td>
             <td><%= e.numReps %></td>
-            <td><%= e.weight %></td>
+            <td>@<%= e.weight %></td>
             <form action = "/workouts/<%= workout._id %>/exercises/<%= e._id %>?_method=DELETE" method = "POST">
                 <button type="submit">X</button>
             </form>
