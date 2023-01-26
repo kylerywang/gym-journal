@@ -1,7 +1,29 @@
-<%- include('../partials/header') %>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <nav>
+    <!-- <img src="/images/camera.svg"> -->
+    <% if (user) { %>
+      <a href="/workouts" <%- title === 'All Workouts' ? 'class="active"' : '' %>>ALL WORKOUTS</a>
+        <!-- <a href="/movements/new"	<%- title === 'Add Movement' ? 'class="active"' : '' %>>
+        ADD MOVEMENT</a> -->
+      <a href="/workouts/new" <%- title === 'Add Workout' ? 'class="active"' : '' %>>ADD WORKOUT</a>
+      <a href="/logout">LOG OUT</a>
+    <% } else { %>
+      <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+    <% } %>
+  </nav>
+  
+  <main>
+    <h1><span id="date"><%=workout.createdAt.getMonth()+1%>/<%=workout.createdAt.getDate()%></span> — <%= title %></h1>
 <section id="show-page">
-    <div><%= workout.updatedAt %></div>
+    <br>
     <tbody>
         <% workout.exercises.forEach(function(e) { %>
           <tr>
@@ -16,11 +38,11 @@
           <br>
           <% }); %>
     </tbody>
-    <div></div>
+    <div><%= workout.note %></div>
 </section>
 <section>
     <br><br>
-    <h2>Add exercise</h2>
+    <h3>Add exercise</h3>
     <form action="/workouts/<%= workout._id %>/exercises" method="POST">
         <label>Exercise Name
             <input type="text" name="exerciseName">
@@ -38,10 +60,12 @@
     </form>
 
     </form>
-    <!-- <h2>Notes: </h2>
-    <form action = "/workouts/<%= workout._id %>/notes" method = "POST">
-        <button type="text">Submit note</button>
-    </form> -->
+   <h3>Add a note</h3>
+    <form action = "/workouts/<%= workout._id %>/note" method = "POST">
+            <input type="text" name="note">
+        <button type="submit">Submit note</button>
+    </form>
+    <br><br>
     <form action = "/workouts/<%= workout._id %>?_method=DELETE" method = "POST">
         <button type="submit">Delete Workout</button>
     </form>

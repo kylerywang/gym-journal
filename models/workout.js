@@ -26,7 +26,7 @@ const workoutSchema = new Schema({
         //later, make the default "[date] Workout"
     },
     exercises: [exerciseSchema],
-    notes:{
+    note:{
         type: String,
     },
     user:{

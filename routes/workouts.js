@@ -9,7 +9,7 @@ router.get('/:id', ensureLoggedIn, workoutsCtrl.show)
 router.delete('/:id', ensureLoggedIn, workoutsCtrl.delete)
 router.delete('/:id/exercises/:exerciseid', ensureLoggedIn, workoutsCtrl.deleteExercise)
 router.post('/:id/exercises', ensureLoggedIn, workoutsCtrl.addExercise)
-// router.post('/:id/notes', workoutsCtrl.addNote)
+router.post('/:id/note', workoutsCtrl.addNote)
 router.post('/', ensureLoggedIn, workoutsCtrl.create)
 
 module.exports = router;

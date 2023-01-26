@@ -9,14 +9,24 @@ module.exports = {
     delete: deleteWorkout,
     deleteExercise,
     addExercise,
+    addNote,
 }
 
 async function index(req,res){
-    try {
-        const workouts = await Workout.find({ user: req.user.id }).lean();
-        console.log(workouts)
-        res.render("/workouts/index", {title: "All Workouts", workouts})
-      } catch (err) {
+    try{
+        await Workout.find({ user: req.user.id })
+            .sort({createdAt: -1})
+            .exec(function(err,workouts){
+                res.render("workouts/index", {title: "All Workouts", workouts})
+            })
+    }
+    // try {
+    //     const workouts = await Workout.find({ user: req.user.id });
+    //     // workouts = workouts.sort('createdAt')
+    //     console.log(workouts)
+    //     res.render("workouts/index", {title: "All Workouts", workouts})
+    //   } 
+    catch (err) {
         console.error("Error: " + err);
         res.render("error");
       } 
@@ -45,7 +55,6 @@ function create(req,res){
     workout.userAvatar = req.user.avatar;
     workout.save(function(err){
         if (err) return res.redirect("/workouts/new");
-        console.log(workout)
         res.redirect(`/workouts/${workout._id}`) //later, redirect to ID-specific page
     })
 }
@@ -54,7 +63,7 @@ function addExercise(req, res){
     Workout.findById(req.params.id, function (err, workout){
         workout.exercises.push(req.body)
         workout.save(function(err){
-            res.redirect(`/workouts`)
+            res.redirect(`/workouts/${workout._id}`)
         })
         
     })
@@ -71,4 +80,15 @@ async function deleteExercise(req,res,next){
     } catch(err) {
         return next(err)
     }
+}
+
+function addNote(req,res){
+    Workout.findById(req.params.id, function (err, workout){
+        console.log("workout",workout)
+        console.log("req.body", req.body)
+        workout.note = req.body.note
+        workout.save(function(err){
+            res.redirect(`/workouts/${workout._id}`)
+        })
+    })
 }
