@@ -14,7 +14,7 @@ const exerciseSchema = new Schema({
     weight:{
         type: Number
     },
-    createdAt: {
+    createdDate: {
         type: Date,
         default: Date.now
     },
