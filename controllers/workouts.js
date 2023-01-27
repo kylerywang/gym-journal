@@ -101,7 +101,7 @@ function update(req,res){
         }
         if(req.body.date){
             console.log("date here!")
-            workout.createdDate = new Date(req.body.date)
+            workout.createdAt = new Date(req.body.date)
         }
         workout.save(function(err){
             res.redirect(`/workouts/${workout._id}`)
