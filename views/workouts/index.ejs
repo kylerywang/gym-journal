@@ -11,7 +11,7 @@
     <tbody>
       <% workouts.forEach(function(w) { %>
         <tr>
-          <td><%=w.createdAt.getMonth()+1%>/<%=w.createdAt.getDate()%></td>
+          <td><%=w.createdDate.getMonth()+1%>/<%=w.createdDate.getDate()%></td>
           <td><%= w.name %></td>
           <td><form action = "/workouts/<%= w._id %>" method = "GET">
             <button type="submit">+</button>
