@@ -14,9 +14,7 @@ const exerciseSchema = new Schema({
     weight:{
         type: Number
     },
-    createdDate: {
-        type: Date,
-    }}, {
+    }, {
         timestamps: true
     })
 
@@ -36,7 +34,10 @@ const workoutSchema = new Schema({
         required:true
     },
     userName: String,
-    userAvatar: String
+    userAvatar: String,
+    createdDate: {
+        type: Date,
+    }
 },{
     timestamps: true
 })
