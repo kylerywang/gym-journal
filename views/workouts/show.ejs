@@ -21,7 +21,7 @@
   </nav>
   
   <main>
-    <h1><span><%=workout.createdDate.getMonth()+1%>/<%=workout.createdDate.getDate()%></span> — <%= title %></h1>
+    <h1><span id="date"><%=workout.createdDate.getMonth()+1%>/<%=workout.createdDate.getDate()%></span> — <%= title %></h1>
 
     
 <section id="show-page">
@@ -32,7 +32,7 @@
             <td><%= e.exerciseName %></td>
             <td><%= e.numSets %>x</td>
             <td><%= e.numReps %></td>
-            <td>@<%= e.weight %></td>
+            <td>@<%= e.weight %>lbs</td>
             <form action = "/workouts/<%= workout._id %>/exercises/<%= e._id %>?_method=DELETE" method = "POST">
                 <button type="submit">X</button>
             </form>
