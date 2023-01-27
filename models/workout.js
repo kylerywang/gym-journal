@@ -16,10 +16,9 @@ const exerciseSchema = new Schema({
     },
     createdDate: {
         type: Date,
-        default: Date.now
-    },
-}
-)
+    }}, {
+        timestamps: true
+    })
 
 
 const workoutSchema = new Schema({
