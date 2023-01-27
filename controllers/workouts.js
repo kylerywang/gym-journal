@@ -10,6 +10,7 @@ module.exports = {
     deleteExercise,
     addExercise,
     addNote,
+    update
 }
 
 async function index(req,res){
@@ -85,8 +86,16 @@ async function deleteExercise(req,res,next){
 function addNote(req,res){
     Workout.findById(req.params.id, function (err, workout){
         console.log("workout",workout)
-        console.log("req.body", req.body)
         workout.note = req.body.note
+        workout.save(function(err){
+            res.redirect(`/workouts/${workout._id}`)
+        })
+    })
+}
+
+function update(req,res){
+    Workout.findById(req.params.id, function (err, workout){
+        workout.name = req.body.name
         workout.save(function(err){
             res.redirect(`/workouts/${workout._id}`)
         })

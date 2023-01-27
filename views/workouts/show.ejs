@@ -21,7 +21,11 @@
   </nav>
   
   <main>
-    <h1><span id="date"><%=workout.createdAt.getMonth()+1%>/<%=workout.createdAt.getDate()%></span> — <%= title %>✎</h1>
+    <h1><span id="date"><%=workout.createdAt.getMonth()+1%>/<%=workout.createdAt.getDate()%></span> — <%= title %></h1>
+    <form action = "/workouts/<%= workout._id %>?_method=PUT" method = "POST">
+        <input type="text" name="name">
+    <button type="submit">Change <title></title></button>
+</form>
 <section id="show-page">
     <br>
     <tbody>

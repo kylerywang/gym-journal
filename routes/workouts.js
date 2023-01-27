@@ -11,5 +11,6 @@ router.delete('/:id/exercises/:exerciseid', ensureLoggedIn, workoutsCtrl.deleteE
 router.post('/:id/exercises', ensureLoggedIn, workoutsCtrl.addExercise)
 router.post('/:id/note', workoutsCtrl.addNote)
 router.post('/', ensureLoggedIn, workoutsCtrl.create)
+router.put('/:id', ensureLoggedIn, workoutsCtrl.update)
 
 module.exports = router;
