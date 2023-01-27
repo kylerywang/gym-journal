@@ -16,7 +16,7 @@ module.exports = {
 async function index(req,res){
     try{
         await Workout.find({ user: req.user.id })
-            .sort({createdAt: -1})
+            .sort({createdDate: -1})
             .exec(function(err,workouts){
                 res.render("workouts/index", {title: "All Workouts", workouts})
             })
