@@ -13,16 +13,12 @@ const exerciseSchema = new Schema({
     },
     weight:{
         type: Number
-        //later, change to weight or time.
     },
     createdAt: {
         type: Date,
         default: Date.now
     },
 }
-// ,{
-//     timestamps: true
-// }
 )
 
 
