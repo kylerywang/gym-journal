@@ -96,7 +96,7 @@ function addNote(req,res){
 function update(req,res){
     Workout.findById(req.params.id, function (err, workout){
         if(req.body.name){
-
+            console.log(req.body.name)
             workout.name = req.body.name
         }
         if(req.body.date){
