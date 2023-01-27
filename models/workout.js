@@ -37,6 +37,7 @@ const workoutSchema = new Schema({
     userAvatar: String,
     createdDate: {
         type: Date,
+        default: Date.now
     }
 },{
     timestamps: true
