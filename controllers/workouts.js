@@ -54,6 +54,7 @@ function create(req,res){
     workout.user = req.user._id;
     workout.userName = req.user.name;
     workout.userAvatar = req.user.avatar;
+    workout.createdDate = req.user.createdAt
     workout.save(function(err){
         if (err) return res.redirect("/workouts/new");
         res.redirect(`/workouts/${workout._id}`) //later, redirect to ID-specific page
