@@ -99,7 +99,7 @@ function update(req,res){
             workout.name = req.body.name
         }
         if(req.body.date){
-            timestamps: false
+            conseol.log("date here!")
             workout.createdAt = req.body.date
         }
         workout.save(function(err){
